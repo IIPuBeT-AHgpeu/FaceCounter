@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Recognize</title>
+</head>
+<body>
+	<hr />
+	<h1 style="text-align: center;">Определение лиц</h1>
+	<hr />
+	<table style="margin-top: 100px;" align="center">
+		<tbody>
+			<tr>
+				<td style="padding: 10px;">Файл</td>
+				<td style="padding: 10px;">Количество обнаруженных лиц</td>
+			</tr>
+			<tr>
+				<td style="padding: 10px;"><input id="image" type="file" name="image" /></td>
+				<td style="padding: 10px;"><input id="result" type="text" readonly name="num" value="0" /></td>
+			</tr>
+		</tbody>
+	</table>
+	<div align="center" style="margin-top: 30px">
+		<input id="find" type="button" value="Определить" />
+	</div>
+</body>
+</html>
+
+<script>
+	document.getElementById("find").onclick = recognizeButton;
+
+	function recognizeButton() {
+        const form = new FormData();
+        form.append("image", document.querySelector("input[type='file']").files[0]);
+
+        fetch("http://localhost:5062/recognize", {
+            method: "POST",
+            body: form,
+        })
+            .then(response => response.text())
+            .then(data => document.getElementById("result").value = data)
+            .catch(error => console.error(error));
+	}
+</script>
