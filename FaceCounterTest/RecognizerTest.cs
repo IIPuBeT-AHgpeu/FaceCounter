@@ -57,7 +57,7 @@ namespace FaceCounterTest
         [TestMethod]
         public void Test_1()
         {
-            if (test_0 == null)
+            if (test_1 == null)
             {
                 Assert.Fail("Отсутствует файл 1.png в тестовой директории.");
             }
@@ -72,7 +72,7 @@ namespace FaceCounterTest
         [TestMethod]
         public void Test_3()
         {
-            if (test_0 == null)
+            if (test_3 == null)
             {
                 Assert.Fail("Отсутствует файл 3.png в тестовой директории.");
             }
