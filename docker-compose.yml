@@ -1,0 +1,23 @@
+version: '3.4'
+
+services:
+  dbservice:
+    container_name: db-facecounter   
+    environment:
+        - POSTGRES_PASSWORD=root
+        - POSTGRES_USER=postgres
+        - POSTGRES_DB=history
+    ports: 
+        - 5000:5432
+    image: postgres:15-alpine
+    
+  facecounter:
+    image: ${DOCKER_REGISTRY-}facecounter
+    build:
+      context: .
+      dockerfile: FaceCounter/Dockerfile
+    links: 
+        - dbservice
+    ports:
+        - 5001:8080
+  
