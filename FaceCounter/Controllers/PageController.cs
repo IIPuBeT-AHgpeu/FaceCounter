@@ -6,7 +6,8 @@ namespace FaceCounter.Controllers
     [Route("pages")]
     public class PageController : Controller
     {
-        private string url = "http://localhost:5062/recognize";
+        private string url = "http://localhost:5001/recognize";
+        private string url_history = "http://localhost:5001/history/all";
 
         [HttpGet]
         public ContentResult Index()
@@ -72,7 +73,7 @@ namespace FaceCounter.Controllers
                 "</div>\r\n    </body>\r\n</html>\r\n<script>\r\n    " +
                 "document.getElementById(\"update\").onclick = updateButton;\r\n\r\n    " +
                 "function updateButton() {\r\n        const Http = new XMLHttpRequest();\r\n        " +
-                "const url = \'" + url + "\';\r\n        " +
+                "const url = \'" + url_history + "\';\r\n        " +
                 "let table = document.getElementById('table');\r\n       " +
                 " try {\r\n            " +
                 "Http.open(\"GET\", url, false);\r\n            " +
